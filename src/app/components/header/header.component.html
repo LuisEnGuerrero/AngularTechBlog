@@ -1,0 +1,32 @@
+<header id="header">
+    <div class="center">
+        <!-- LOGO -->
+        <div id="logo">
+            <img src="../../assets/images/angular.png" class="app-logo" alt="Logotipo" />
+            <span id="brand">
+                <strong>Angular</strong>TechBlog
+            </span>
+        </div>
+
+        <!-- MENU -->
+        <nav id="menu">
+            <ul>
+                <li>
+                    <a [routerLink]="['/home']" [routerLinkActive]="['active']">Inicio</a>
+                </li>
+                <li>
+                    <a [routerLink]="['/blog']" [routerLinkActive]="['active']">Blog</a>
+                </li>
+                <li>
+                    <a [routerLink]="['/comentarios']" [routerLinkActive]="['active']">Comentarios</a>
+                </li>
+                <li>
+                    <a href="https://luisenguerrero.netlify.app/" [routerLinkActive]="['active']" target=_blank>Sobre mi</a>
+                </li>
+            </ul>
+        </nav>
+        <!-- LIMPIAR FLOTADOS -->
+        <div class="clearfix"></div>
+    </div>
+</header>
+

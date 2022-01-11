@@ -1,0 +1,59 @@
+<app-slider
+    [nombre]="'Crear artículo!'"
+    [size]="'small'"
+></app-slider>
+
+<div class="center">
+    <section id="content">
+        
+        <h1>{{page_title}}</h1>
+        
+        <form class="mid-form" #articleForm="ngForm" (ngSubmit)="onSubmit()">
+            <div class="form-group">
+                <label for="title">Título:</label>
+                <input type="text" name="title" #title="ngModel" [(ngModel)]="article.title" required/>
+
+                <small class="danger" *ngIf="!title.valid && title.touched">
+                    El título no es válido!!!
+                </small>
+            </div>
+            <div class="form-group">
+                <label for="content">Contenido del Artículo:</label>
+                <textarea name="content" #content="ngModel" [(ngModel)]="article.content" required></textarea>
+
+                <small class="danger" *ngIf="!content.valid && content.touched">
+                    Has olvidado el contenido!!!
+                </small>
+            </div>
+
+            <!-- EN FACE DE DESARROLLO
+            <div class="form-group">
+
+                <div class="image-thumb" *ngIf="isEdit">
+                    <img src="{{url + 'get-image/' + article.image}}" alt="{{article.title}}" *ngIf="article.image" width="60%"/>
+                    <img src="assets/images/default.png" alt="{{article.title}}" *ngIf="!article.image" width="60%"/>
+                </div>
+
+                <angular-file-uploader 
+                    [config]="afuConfig"
+                    (ApiResponse)="imageUpload($event)"
+                >
+                </angular-file-uploader>
+            </div>
+            -->
+
+            <!-- EN FACE DE PRODUCCION UTILIZANDO FIREBASE STORAGE -->
+
+            <div class="form-group">
+                <input type="file" accept=".png, .jpg, .gif, .jpeg" (change)="cargarImg($event)" id="inputFile">
+                <label for="inputFile" class="inputFile">Cargar Imagen para el Artículo...</label>
+            </div>
+
+            <div class="clearfix"></div>
+
+            <input type="submit" value="Guardar" class="btn btn-success" [disabled]="articleForm.invalid"/>
+       </form>
+
+    </section>
+    <app-sidebar></app-sidebar>
+</div>
